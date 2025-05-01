@@ -1,0 +1,51 @@
+### 🌱 Gradle 관련 ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### 🛠️ Spring Tool Suite (STS) ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+bin/
+
+### 🤖 IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### 🪪 OS/Tool별 무시할 파일들 ###
+.DS_Store
+Thumbs.db
+
+### 🔐 인증 정보 등 예외 처리 ###
+application.yml
+application-*.yml
+.env
+
+### 🐘 로그 파일 ###
+*.log
+
+### 🧪 테스트 리포트 ###
+test-output/
+*.class
+
+### 🧰 Spring DevTools ###
+spring-boot-devtools.properties
+
+### 🧱 NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### 🧪 VS Code ###
+.vscode/
+햣
