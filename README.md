@@ -32,11 +32,23 @@
 
 ```bash
 src
-├── config              # Kafka, Redis 설정
-├── controller          # API 요청 처리
-├── dto                 # 요청/응답 객체
-├── entity              # JPA Entity
-├── kafka               # Producer / Consumer
-├── repository          # JPA 인터페이스
-├── service             # 비즈니스 로직
-└── utils               # 유틸 클래스
+├── common                  # 공통 유틸, 예외, 공통 응답, 인터셉터
+├── config                  # 전역 설정 (Kafka, Redis, DB, Security 등)
+├── domain
+│   ├── payment             # 결제 도메인
+│   │   ├── usecase         # 서비스 계층 (비즈니스 로직)
+│   │   ├── domain          # 핵심 도메인 모델 (Entity, VO, Aggregate, Domain Service)
+│   │   ├── repository      # JPA
+│   │   └── delivery        # Controller, API Layer
+│   └── product             # 상품 도메인
+│   │   ├── usecase         
+│   │   ├── domain          
+│   │   ├── repository      
+│   │   └── delivery        
+│   └── user                # 유저 도메인
+│       ├── usecase
+│       ├── domain
+│       ├── repository
+│       └── delivery
+└── support                 # 글로벌 설정, 인터셉터, AOP, 공통 에러, 공통 유틸
+
