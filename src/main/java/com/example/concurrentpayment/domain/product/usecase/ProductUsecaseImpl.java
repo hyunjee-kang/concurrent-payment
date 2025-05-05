@@ -3,10 +3,9 @@ package com.example.concurrentpayment.domain.product.usecase;
 import com.example.concurrentpayment.domain.product.dto.ProductCreateDto;
 import com.example.concurrentpayment.domain.product.dto.ProductDto;
 import com.example.concurrentpayment.domain.product.repository.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.awt.print.Pageable;
-import java.util.List;
 
 @Service
 public class ProductUsecaseImpl implements ProductUsecase {
@@ -33,7 +32,7 @@ public class ProductUsecaseImpl implements ProductUsecase {
 
     // 상품 목록 조회
     @Override
-    public List<ProductDto> getProducts(Pageable pageable) {
+    public Page<ProductDto> getProducts(Pageable pageable) {
         // 상품 목록 조회 로직 구현
         return null;
     }
