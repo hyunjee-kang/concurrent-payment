@@ -23,5 +23,5 @@ public class Product extends BaseTimeEntity {
     private Long qty = 0L;
 
     @Column(nullable = false)
-    private Long amount = 0L;
+    private Long price = 0L;
 }

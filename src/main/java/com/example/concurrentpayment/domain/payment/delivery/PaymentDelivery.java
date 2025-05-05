@@ -68,29 +68,29 @@ public class PaymentDelivery {
             }
     )
     @GetMapping("/{id}")
-    public PaymentDto getPaymentById(@PathVariable("id") Long noticeId) {
+    public PaymentDto getPaymentById(@PathVariable("id") Long paymentId) {
 
-        return paymentUsecase.getPaymentById(noticeId);
+        return paymentUsecase.getPaymentById(paymentId);
     }
 
 
     // 결제 요청 다건 조회 API
     @Operation(
-            summary = "get all payments",
-            description = "결제 요청 다건 조회",
+            summary = "get payment by id",
+            description = "ID 로 결제 요청 조회",
             tags = {"payments"}
     )
     @Parameters(
             value = {
-                    @Parameter(name = "status", description = "상태 검색", in = ParameterIn.QUERY),
-                    @Parameter(name = "page", description = "조회 시작 위치", in = ParameterIn.QUERY),
-                    @Parameter(name = "size", description = "조회 개수", in = ParameterIn.QUERY),
-                    @Parameter(name = "sort", description = "정렬", in = ParameterIn.QUERY)
+                    @Parameter(name = "id", description = "결제 요청 아이디", in = ParameterIn.PATH)
             }
     )
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "결제 요청 다건 조회 성공")
+                    @ApiResponse(responseCode = "200", description = "get payment successfully",
+                            content = @Content(schema = @Schema(implementation = PaymentDto.class))
+                    ),
+                    @ApiResponse(responseCode = "404", description = "no such payment")
             }
     )
     @GetMapping
