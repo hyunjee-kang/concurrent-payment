@@ -25,8 +25,6 @@ import org.springframework.context.annotation.Profile;
 )
 public class SwaggerConfig {
 
-    private static final String BEARER_TOKEN_PREFIX = "Bearer";
-
     @Bean
     @Profile("!Prod") // 특정 환경에서 Swagger를 비활성화 할 때
     public OpenAPI customOpenAPI() {
@@ -36,7 +34,7 @@ public class SwaggerConfig {
                 .addSecuritySchemes(jwtSchemeName, new SecurityScheme()
                         .name(jwtSchemeName)
                         .type(SecurityScheme.Type.HTTP)
-                        .scheme(BEARER_TOKEN_PREFIX)
+                        .scheme(JwtTokenProvider.BEARER_TYPE)
                         .bearerFormat(JwtTokenProvider.TYPE));
 
         // Swagger UI 접속 후, 딱 한 번만 accessToken을 입력해주면 모든 API에 토큰 인증 작업이 적용
