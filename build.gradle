@@ -24,23 +24,58 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.kafka:spring-kafka'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    testImplementation 'org.springframework.kafka:spring-kafka-test'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.testcontainers:kafka'
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // ==========================
+    // 🔹 Spring Boot 핵심 스타터
+    // ==========================
+    implementation 'org.springframework.boot:spring-boot-starter-web'           // REST API 개발
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'      // JPA (Hibernate) 기반 ORM
+    implementation 'org.springframework.boot:spring-boot-starter-validation'    // Bean Validation (JSR-380)
+
+    // ==========================
+    // 🔹 데이터베이스 관련
+    // ==========================
+    runtimeOnly 'com.mysql:mysql-connector-j'    // MySQL JDBC 드라이버
+    runtimeOnly 'com.h2database:h2'              // 인메모리 H2 DB (개발/테스트용)
+
+    // ==========================
+    // 🔹 캐시 / 메시징 시스템
+    // ==========================
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'  // Redis 연동
+    implementation 'org.springframework.kafka:spring-kafka'                   // Kafka 메시징 지원
+
+    // ==========================
+    // 🔹 문서화 / API 명세
+    // ==========================
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'  // Swagger UI / OpenAPI 3.0
+
+    // ==========================
+    // 🔹 DTO 매핑 도구 (Mapper)
+    // ==========================
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'                      // MapStruct: DTO ↔ Entity 매핑
+    implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'        // Lombok + MapStruct 통합
+
+    // ==========================
+    // 🔹 Lombok (코드 간결화)
+    // ==========================
+    compileOnly 'org.projectlombok:lombok'            // 어노테이션 기반 코드 생성
+    annotationProcessor 'org.projectlombok:lombok'    // Lombok 컴파일러 어노테이션 처리기
+
+    // ==========================
+    // 🔹 개발 환경
+    // ==========================
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'   // 자동 재시작 등 개발 편의 기능
+
+    // ==========================
+    // 🔹 테스트 관련 의존성
+    // ==========================
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'   // 기본 테스트 환경 (JUnit, Mockito 등)
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers' // Spring Boot + Testcontainers 통합
+    testImplementation 'org.springframework.kafka:spring-kafka-test'         // Kafka 테스트 유틸
+    testImplementation 'org.testcontainers:junit-jupiter'                    // Testcontainers + JUnit 5
+    testImplementation 'org.testcontainers:kafka'                            // Kafka 컨테이너 테스트
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'             // JUnit 런타임
 }
+
 
 tasks.named('test') {
     useJUnitPlatform()
